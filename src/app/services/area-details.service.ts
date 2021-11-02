@@ -1,41 +1,32 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AreaDetailsService {
 
-  constructor() { }
+  url = '/api'
+  constructor(private http: HttpClient) { }
   areaDetalles=[
     {
       id:1,
       areaName:"Oftalmologia",
       areaImg:"assets/img/area1.jpg"
-    },
-    {
-      id:2,
-      areaName:"Cardiologia",
-      areaImg:"assets/img/area2.jpg"
-    },
-    {
-      id:3,
-      areaName:"Neumologia",
-      areaImg:"assets/img/area3.jpg"
-    },
-    {
-      id:4,
-      areaName:"Pediatria",
-      areaImg:"assets/img/area4.jpg"
-    },
-    {
-      id:5,
-      areaName:"Endocrinologia",
-      areaImg:"assets/img/area5.jpg"
-    },
-    {
-      id:6,
-      areaName:"Psiquiatria",
-      areaImg:"assets/img/area6.jpg"
     }
   ]
+  getAreaLista(){
+    return this.http.get(this.url+'/getAreas');
+  }
+  getUnArea(id:string){
+    return this.http.get(this.url+'/getAreas/'+id);
+  }
+  getUnAreaName(areaName:string){
+    return this.http.get(this.url+'/getAreasName/'+areaName);
+  }
+}
+export interface AreaLista{
+  id:string;
+  areaName: string;
+  areaImg: string;
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DoctoresDetailsService } from 'src/app/services/doctores-details.service';
+import { Router } from '@angular/router';
+import { AreaDetailsService } from 'src/app/services/area-details.service';
+import { CitasDetailsService, CitaRegistro } from 'src/app/services/citas-details.service';
 
 @Component({
   selector: 'app-confirmar-ficha',
@@ -8,24 +10,60 @@ import { DoctoresDetailsService } from 'src/app/services/doctores-details.servic
 })
 export class ConfirmarFichaComponent implements OnInit {
 
-  constructor(private service:DoctoresDetailsService) { }
-  doctorData:any;
-  area:string | any= "";
+  constructor(private areaService:AreaDetailsService, private router:Router, private citaService:CitasDetailsService) { }
+  doctoresData:any;
+  areaName:string | any= "";
   fecha:any;
   doctorSeleccionado:string = "";
+  idDoctorSeleccionado:string = "";
+  nombreUsuario:string|any="";
   ngOnInit(): void {
-    this.doctorData = this.service.doctoresDetalles;
-    this.area = sessionStorage.getItem('area');    
+    let nombre = sessionStorage.getItem('usuarioNombre');
+    this.nombreUsuario = nombre;
+    this.areaName = sessionStorage.getItem('area');
+    this.listarDoctores();
+  }
+  listarDoctores(){
+    this.areaService.getUnAreaName(this.areaName).subscribe(
+      res=>{
+        this.doctoresData = res
+      },
+      err=>{
+        console.log(err);          
+      }
+    );
+  }
+  citaReg:CitaRegistro={
+    fecha: '',
+    doctorId: 0,
+    pacienteId: 0,
+    estado: true
   }
   confirmarCita(){
     if(this.doctorSeleccionado){
-      
+      if(this.fecha){
+        let idpac = sessionStorage.getItem('usuarioId')+"";        
+        let iddoc = this.idDoctorSeleccionado;        
+        let doctorId = parseInt(iddoc);
+        let pacienteId = parseInt(idpac);
+
+        this.citaReg.fecha = this.fecha;
+        this.citaReg.doctorId = doctorId;
+        this.citaReg.pacienteId = pacienteId;
+        this.citaReg.estado = true;
+
+        this.citaService.addCitaRegistro(this.citaReg).subscribe();
+        alert("Cita Registrada");
+        this.router.navigate(['sacarFichas']);       
+      }else{
+        alert("Tiene que seleccionar una fecha");
+      }
     } else {
       alert("Tiene que seleccionar un medico");
     }
-    console.log(this.fecha);
   }
   seleccionarMedico(id:any, name:any){
+    this.idDoctorSeleccionado = id;
     this.doctorSeleccionado = name;
   }
 }
