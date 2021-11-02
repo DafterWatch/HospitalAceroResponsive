@@ -32,7 +32,7 @@
 <div class="container mt-4 mb-4">
     <h1 class="text-center">Doctores <span class="highlight">reconocidos mundialmente</span></h1>
     <div class="row">
-        <div class="col-lg-3 mt-3" *ngFor="let doc of doctoresData; index as i">           
+        <div class="col-lg-3 mt-3" *ngFor="let doc of doctoresData | slice:0:4; index as i">           
             <div class="docbox" *ngIf="i<=3">
                 <img src="{{doc.doctorImg}}"/>
                 <h1>{{doc.doctorName}}</h1>

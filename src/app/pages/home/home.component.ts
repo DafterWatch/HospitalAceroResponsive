@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DoctoresDetailsService } from 'src/app/services/doctores-details.service';
+import { DoctoresDetailsService, DoctoresLista } from 'src/app/services/doctores-details.service';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +8,19 @@ import { DoctoresDetailsService } from 'src/app/services/doctores-details.servic
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private service:DoctoresDetailsService) { }
-  doctoresData:any;
+  constructor(private doctorService:DoctoresDetailsService) { }
+  doctoresData:DoctoresLista[] = [];
   ngOnInit(): void {
-    this.doctoresData = this.service.doctoresDetalles;
+    this.listarDoctores();
   }
-
+  listarDoctores(){
+    this.doctorService.getDoctoresLista().subscribe(
+      res => {
+        this.doctoresData=<any>res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 }
