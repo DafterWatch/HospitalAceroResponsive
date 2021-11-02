@@ -1,0 +1,25 @@
+<div class="container mt-5 mb-5">
+    <h1>Seleccionar Medico</h1>
+    <div class="row">
+        <div class="col-lg-4" *ngFor="let doc of doctorData">
+            <div class="docbox mt-3 mb-3">
+                <img src="{{doc.doctorImg}}">
+                <h1>{{doc.doctorName}}</h1>
+                <p>{{doc.doctorDetails}}</p>
+                <br>
+                <button class="citabtn" (click)="seleccionarMedico(doc.id, doc.doctorName)">Seleccionar</button>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h1>Confirmar Cita</h1>
+            <form>
+                <input type="date" class="form-control mt-2 mb-2" [(ngModel)]="fecha" name="fecha">
+                <br>
+                <p>Area: {{area}}</p>
+                <p>Medico: {{doctorSeleccionado}}</p>
+                <p>Fecha: {{fecha}}</p>
+                <button class="btn btn-md btn-dark mt-3" (click)="confirmarCita()">Confirmar Cita Medica</button>
+            </form>
+        </div>
+    </div>
+</div>
