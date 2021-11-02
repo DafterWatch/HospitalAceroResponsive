@@ -1,1 +1,27 @@
-<p>ver-fichas works!</p>
+<div class="container">
+    <h1>Bienvenido Dr.<span style="color: blue;">{{nombreUsuario}}</span></h1>
+    <br>
+    <h2>Lista de Citas Medicas</h2>   
+    <table class="table">
+        <thead>
+          <tr style="color: blue;">
+            <th scope="col">Nombre Paciente</th>
+            <th scope="col">Fecha Cita Medica</th>
+            <th scope="col">Consulta Realizada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cita of ListarCitas">
+            <th>{{cita.nombreusuario}}</th>
+            <td>{{cita.fecha}}</td>
+            <td>
+                <span *ngIf="cita.estado">No Realizado</span>
+                <span *ngIf="!cita.estado">Realizado</span>
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary">Realizar Consulta</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

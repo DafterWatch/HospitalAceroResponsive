@@ -9,18 +9,17 @@ export class CitasDetailsService {
   url = '/api'
   constructor(private http: HttpClient) { }
 
-  getCitasLista(cita:CitaLista){
-    return this.http.post(this.url+'/getUsuariosLogin', cita);
+  getCitasLista(cita:any){
+    return this.http.get(this.url+'/getCitas/'+cita);
   }
   addCitaRegistro(cita:CitaRegistro){
     return this.http.post(this.url+'/addCita',cita);
   }
 }
 export interface CitaLista{
-  id:number;
+  idusuarios:number;
+  nombreusuario:string;
   fecha:string;
-  doctorId:number;
-  pacienteId:number;
   estado:boolean;
 }
 export interface CitaRegistro{
