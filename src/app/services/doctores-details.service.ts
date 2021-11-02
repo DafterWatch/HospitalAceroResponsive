@@ -11,6 +11,9 @@ export class DoctoresDetailsService {
   getDoctoresLista(){
     return this.http.get(this.url+'/getDoctores');
   }
+  getUnDoctor(id:string){
+    return this.http.get(this.url+'/getDoctores/'+id);
+  }
   doctoresDetalles=[
     {
       id:1,
