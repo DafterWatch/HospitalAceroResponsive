@@ -17,6 +17,7 @@ import { SacarFichasComponent } from './pages/sacar-fichas/sacar-fichas.componen
 import { FormsModule } from '@angular/forms';
 import { ConfirmarFichaComponent } from './pages/confirmar-ficha/confirmar-ficha.component';
 import { ConfirmacionInterfazComponent } from './pages/confirmacion-interfaz/confirmacion-interfaz.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ConfirmacionInterfazComponent } from './pages/confirmacion-interfaz/con
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

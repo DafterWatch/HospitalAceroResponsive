@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuariosDetailsService, UsuarioLogin, UsuarioTipo} from 'src/app/services/usuarios-details.service';
 
 @Component({
   selector: 'app-login',
@@ -8,28 +9,41 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router: Router) { }
-  correoSession:any="";
-  contraSession:any="";
+  constructor(public router: Router, private serviceLogin:UsuariosDetailsService) { }
   ngOnInit(): void {
-    this.correoSession = sessionStorage.getItem('correo');
-    this.contraSession = sessionStorage.getItem('contrasena');
   }
-  mail = '';
-  pass = '';
+  usuarioLogin:UsuarioLogin={
+    correousuario:'',
+    contrausuario:''
+  }
+  usuarioTipo:UsuarioTipo|any={
+    idusuarios:'',
+    nombreusuario:'',
+    correousuario:'',
+    contrausuario:'',
+    categoria:''
+  };
   iniciarSesion(){
-    if(this.mail.length > 0 && this.pass.length > 0){
-      if(this.mail == "medico"){
-        sessionStorage.setItem("usuario","Dr. Carioca");
-        this.router.navigate(['verFichas']);
-      } else if(this.mail == this.correoSession && this.pass == this.contraSession){
-        sessionStorage.setItem("usuario","Juan");
-        this.router.navigate(['sacarFichas']);
-      } else {
-        alert("Esta cuenta no existe");
-      }
-    } else {
-      alert("Complete los datos");
+    if(this.usuarioLogin.correousuario.length > 0 && this.usuarioLogin.contrausuario.length > 0){
+      this.serviceLogin.getUsuarioLogin(this.usuarioLogin).subscribe(
+        res=>{
+          if(res){
+            this.usuarioTipo = res
+            if(this.usuarioTipo.categoria=="paciente"){
+              this.router.navigate(['sacarFichas']);          
+            } else if(this.usuarioTipo.categoria=="medico"){
+              this.router.navigate(['verFichas']);
+            }         
+          } else {
+            alert("Correo o contraseña incorrectos");          
+          }
+        },
+        err=>{
+          console.log(err);        
+        }
+      );
+    } else{
+      alert("Complete los campos vacios");
     }
   }
 }
