@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
         res=>{
           if(res){
             this.usuarioTipo = res
-            if(this.usuarioTipo.categoria=="paciente"){
+            sessionStorage.setItem('usuarioNombre',this.usuarioTipo.nombreusuario);
+            if(this.usuarioTipo.categoria=="paciente"){              
               this.router.navigate(['sacarFichas']);          
             } else if(this.usuarioTipo.categoria=="medico"){
               this.router.navigate(['verFichas']);

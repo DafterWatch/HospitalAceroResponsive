@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuariosDetailsService, UsuarioRegistro } from 'src/app/services/usuarios-details.service';
 
 @Component({
   selector: 'app-registro',
@@ -8,20 +9,22 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private usuarioService:UsuariosDetailsService) { }
 
   ngOnInit(): void {
   }
 
-  user = '';
-  pass = '';
   reppass = '';
-  mail = '';
+  usuarioRegistro:UsuarioRegistro = {
+    nombreusuario:'',
+    correousuario:'',
+    contrausuario:'',
+    categoria:'paciente'
+  }
   registrarNuevoUsuario(){    
-    if(this.user.length>0 && this.pass.length>0 && this.reppass.length>0 && this.mail.length>0){
-      if(this.pass == this.reppass){  
-        sessionStorage.setItem('correo', this.mail);
-        sessionStorage.setItem('contrasena', this.pass);
+    if(this.usuarioRegistro.nombreusuario.length>0 && this.usuarioRegistro.contrausuario.length>0 && this.reppass.length>0 && this.usuarioRegistro.correousuario.length>0){
+      if(this.usuarioRegistro.contrausuario == this.reppass){
+        this.usuarioService.addUsuarioRegistro(this.usuarioRegistro).subscribe();
         alert("Se ha registrado un nuevo usuario");
         this.router.navigate(['login']);
       } else {

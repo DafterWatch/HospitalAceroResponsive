@@ -6,17 +6,17 @@
           <h4 class="h4 mb-3 fw-normal">Complete los campos vacios</h4>
       
           <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="user" name="usuario">
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="usuarioRegistro.nombreusuario" name="usuario">
             <label for="floatingInput">Usuario</label>
           </div>
           <br>
           <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="mail" name="correo">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="usuarioRegistro.correousuario" name="correo">
             <label for="floatingInput">Correo Electronico</label>
           </div>
           <br>
           <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="pass" name="contra">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="usuarioRegistro.contrausuario" name="contra">
             <label for="floatingPassword">Contraseña</label>
           </div>
           <br>

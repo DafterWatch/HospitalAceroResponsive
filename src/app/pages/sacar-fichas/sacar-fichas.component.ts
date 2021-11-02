@@ -11,9 +11,11 @@ export class SacarFichasComponent implements OnInit {
 
   constructor(private service:AreaDetailsService, public router: Router) { }
   areasData:any;
+  nombreUsuario:string|any;
   ngOnInit(): void {
     this.areasData = this.service.areaDetalles;
-   
+    let nombre = sessionStorage.getItem('usuarioNombre');
+    this.nombreUsuario = nombre;
   }
   irConfirmarFicha(area:any){
     sessionStorage.setItem('area', area);

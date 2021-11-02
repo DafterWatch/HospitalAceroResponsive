@@ -12,6 +12,9 @@ export class UsuariosDetailsService {
   getUsuarioLogin(equipo:UsuarioLogin){
     return this.http.post(this.url+'/getUsuariosLogin', equipo);
   }
+  addUsuarioRegistro(usuario:UsuarioRegistro){
+    return this.http.post(this.url+'/addUsuario',usuario);
+  }
 }
 export interface UsuarioLogin{
   correousuario:string;
@@ -20,6 +23,12 @@ export interface UsuarioLogin{
 
 export interface UsuarioTipo{
   idusuarios:string,
+  nombreusuario:string,
+  correousuario:string;
+  contrausuario:string;
+  categoria:string;
+}
+export interface UsuarioRegistro{
   nombreusuario:string,
   correousuario:string;
   contrausuario:string;
