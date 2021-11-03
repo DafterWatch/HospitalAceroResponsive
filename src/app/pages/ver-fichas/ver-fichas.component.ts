@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CitasDetailsService, CitaLista } from 'src/app/services/citas-details.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { CitasDetailsService, CitaLista } from 'src/app/services/citas-details.s
 })
 export class VerFichasComponent implements OnInit {
 
-  constructor(private citaService:CitasDetailsService) { }
+  constructor(private citaService:CitasDetailsService, private router:Router) { }
   ListarCitas: CitaLista[] = [];
   nombreUsuario:any;
   idDoc:any;
@@ -26,5 +27,9 @@ export class VerFichasComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+  irRegistroPaciente(id:any){
+    sessionStorage.setItem('idPaciente',id);
+    this.router.navigate(['registroPaciente']);
   }
 }

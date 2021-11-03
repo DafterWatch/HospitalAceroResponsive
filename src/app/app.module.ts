@@ -16,8 +16,8 @@ import { VerFichasComponent } from './pages/ver-fichas/ver-fichas.component';
 import { SacarFichasComponent } from './pages/sacar-fichas/sacar-fichas.component';
 import { FormsModule } from '@angular/forms';
 import { ConfirmarFichaComponent } from './pages/confirmar-ficha/confirmar-ficha.component';
-import { ConfirmacionInterfazComponent } from './pages/confirmacion-interfaz/confirmacion-interfaz.component';
 import {HttpClientModule} from '@angular/common/http';
+import { RegistroPacienteComponent } from './pages/registro-paciente/registro-paciente.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import {HttpClientModule} from '@angular/common/http';
     VerFichasComponent,
     SacarFichasComponent,
     ConfirmarFichaComponent,
-    ConfirmacionInterfazComponent,
+    RegistroPacienteComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { MenupageComponent } from './pages/menupage/menupage.component';
+import { RegistroPacienteComponent } from './pages/registro-paciente/registro-paciente.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { SacarFichasComponent } from './pages/sacar-fichas/sacar-fichas.component';
 import { VerFichasComponent } from './pages/ver-fichas/ver-fichas.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'verFichas',component:VerFichasComponent},
   {path:'sacarFichas',component:SacarFichasComponent},
   {path:'confirmarFicha',component:ConfirmarFichaComponent},
+  {path:'registroPaciente',component:RegistroPacienteComponent},
 ];
 
 @NgModule({

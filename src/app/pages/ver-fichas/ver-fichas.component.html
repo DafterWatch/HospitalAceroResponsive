@@ -19,7 +19,7 @@
                 <span *ngIf="!cita.estado">Realizado</span>
             </td>
             <td>
-                <button type="button" class="btn btn-primary">Realizar Consulta</button>
+                <button (click)="irRegistroPaciente(cita.idusuarios)" type="button" class="btn btn-primary">Realizar Consulta</button>
             </td>
           </tr>
         </tbody>
