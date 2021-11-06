@@ -32,8 +32,9 @@ export class VerFichasComponent implements OnInit {
     sessionStorage.setItem('idPaciente',id);
     this.router.navigate(['registroPaciente']);
   }
-  irRegistrosListaPaciente(id:any){
+  irRegistrosListaPaciente(id:any, nombreus:string){
     sessionStorage.setItem('idPaciente',id);
+    sessionStorage.setItem('nombrePaciente',nombreus);
     this.router.navigate(['registroPacienteLista']);
   }
 }

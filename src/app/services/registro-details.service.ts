@@ -13,6 +13,9 @@ export class RegistroDetailsService {
   addRegistroMedico(cita:RegistroAdd){
     return this.http.post(this.url+'/addRegistroMedico',cita);
   }
+  getRegistroUnPaciente(cita:any){
+    return this.http.post(this.url+'/getRegistroListaPacienteUno',cita);
+  }
 }
 export interface RegistroLista{
   idRegistro: string;
@@ -29,4 +32,20 @@ export interface RegistroAdd{
   datosConsulta: string;
   instruccionesDoctor: string;
   recetaMedica: string;
+}
+export interface RegistroBusqueda{
+  doctorId:number;
+  idusuarios:number;
+}
+export interface RegistroListaPacienteBusqueda{
+  idRegistro:string;
+  idDoctor:string;
+  idusuarios:string;
+  doctorName:string;
+  nombreusuario:string;  
+  doctorDetails:string;
+  fechaConsulta:string;
+  datosConsulta:string;
+  instruccionesDoctor:string;
+  recetaMedica:string;
 }
