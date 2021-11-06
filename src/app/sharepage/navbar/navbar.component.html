@@ -6,24 +6,29 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto" *ngIf="!inicioSesion">
           <li class="nav-item">
             <a class="nav-link active" routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Inicio</a>
-          </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="menu" routerLinkActive="active-link">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="about" routerLinkActive="active-link">Sobre Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="contact" routerLinkActive="active-link">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="login" routerLinkActive="active-link">Iniciar Sesion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="registro" routerLinkActive="active-link">Registrarse</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ms-auto" *ngIf="inicioSesion">
           <li class="nav-item">
-            <a class="nav-link" routerLink="menu" routerLinkActive="active-link">Menu</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="about" routerLinkActive="active-link">Sobre Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="contact" routerLinkActive="active-link">Contacto</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="login" routerLinkActive="active-link">Iniciar Sesion</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="registro" routerLinkActive="active-link">Registrarse</a>
+            <a class="nav-link" (click)="cerrarSesion()" style="cursor: pointer;">Cerrar Sesion</a>
           </li>
         </ul>
       </div>

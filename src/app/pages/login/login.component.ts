@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ControlLoginService } from 'src/app/services/control-login.service';
 import { UsuariosDetailsService, UsuarioLogin, UsuarioTipo} from 'src/app/services/usuarios-details.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UsuariosDetailsService, UsuarioLogin, UsuarioTipo} from 'src/app/servic
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router: Router, private serviceLogin:UsuariosDetailsService) { }
+  constructor(public router: Router, private serviceLogin:UsuariosDetailsService, private loginControl:ControlLoginService) { }
   ngOnInit(): void {
   }
   usuarioLogin:UsuarioLogin={
@@ -31,6 +32,9 @@ export class LoginComponent implements OnInit {
             this.usuarioTipo = res
             sessionStorage.setItem('usuarioNombre',this.usuarioTipo.nombreusuario);
             sessionStorage.setItem('usuarioId',this.usuarioTipo.idusuarios);
+            this.loginControl.disparador.emit({
+              data:"si"
+            });
             if(this.usuarioTipo.categoria=="paciente"){              
               this.router.navigate(['sacarFichas']);          
             } else if(this.usuarioTipo.categoria=="medico"){
