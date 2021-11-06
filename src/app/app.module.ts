@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { ConfirmarFichaComponent } from './pages/confirmar-ficha/confirmar-ficha.component';
 import {HttpClientModule} from '@angular/common/http';
 import { RegistroPacienteComponent } from './pages/registro-paciente/registro-paciente.component';
+import { ListaCitasComponent } from './pages/lista-citas/lista-citas.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { RegistroPacienteComponent } from './pages/registro-paciente/registro-pa
     SacarFichasComponent,
     ConfirmarFichaComponent,
     RegistroPacienteComponent,
+    ListaCitasComponent,
   ],
   imports: [
     BrowserModule,

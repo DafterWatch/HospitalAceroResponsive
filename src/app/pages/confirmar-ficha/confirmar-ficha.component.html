@@ -2,7 +2,7 @@
     <h1>Bienvenido <span style="color: blue;">{{nombreUsuario}}</span></h1>
     <br>
     <h2>Seleccionar Medico</h2>
-    <button routerLink="/sacarFichas" type="button" class="btn btn-dark">Volver Seleccionar Especialidad</button>   
+    <button routerLink="/sacarFichas" type="button" class="btn btn-dark">Volver Seleccionar Especialidad</button>  
     <div class="row">
         <div class="col-lg-4" *ngFor="let doc of doctoresData">
             <div class="docbox mt-3 mb-3">
@@ -15,12 +15,18 @@
         </div>
         <div class="col-lg-6">
             <h1>Confirmar Cita</h1>
+            <br>
             <form>
+                <h2>Fecha</h2>
                 <input type="date" class="form-control mt-2 mb-2" [(ngModel)]="fecha" name="fecha">
+                <br>
+                <h2>Hora</h2>
+                <input type="time" class="form-control" [(ngModel)]="hora" name="hora">
                 <br>
                 <p><span style="color: blue;">Area: </span><b>{{areaName}}</b></p>
                 <p><span style="color: blue;">Medico: </span><b>{{doctorSeleccionado}}</b></p>
                 <p><span style="color: blue;">Fecha: </span><b>{{fecha}}</b></p>
+                <p><span style="color: blue;">Hora: </span><b>{{hora}}</b></p>
                 <button class="btn btn-md btn-dark mt-3" (click)="confirmarCita()">Confirmar Cita Medica</button>
             </form>
         </div>

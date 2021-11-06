@@ -4,6 +4,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ConfirmarFichaComponent } from './pages/confirmar-ficha/confirmar-ficha.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ListaCitasComponent } from './pages/lista-citas/lista-citas.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { MenupageComponent } from './pages/menupage/menupage.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'sacarFichas',component:SacarFichasComponent},
   {path:'confirmarFicha',component:ConfirmarFichaComponent},
   {path:'registroPaciente',component:RegistroPacienteComponent},
+  {path:'listaCitas',component:ListaCitasComponent},
 ];
 
 @NgModule({

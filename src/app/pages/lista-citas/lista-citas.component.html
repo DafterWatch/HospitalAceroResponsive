@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Bienvenido <span style="color: blue;">{{nombreUsuario}}</span></h1>
+    <br>
+    <h2>Lista de Citas Medicas</h2> 
+    <button routerLink="/sacarFichas" type="button" class="btn btn-dark">Volver Sacar Ficha</button>  
+    <table class="table">
+        <thead>
+          <tr style="color: blue;">
+            <th scope="col">Area</th>
+            <th scope="col">Doctor</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cita of ListarCitas">
+            <th>{{cita.doctorDetails}}</th>
+            <td>{{cita.doctorName}}</td>
+            <td>{{cita.fecha}}</td>
+            <td>{{cita.hora}}</td>
+            <td>
+                <span *ngIf="cita.estado">No Realizado</span>
+                <span *ngIf="!cita.estado">Realizado</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

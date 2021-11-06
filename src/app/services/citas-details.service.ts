@@ -12,6 +12,9 @@ export class CitasDetailsService {
   getCitasLista(cita:any){
     return this.http.get(this.url+'/getCitas/'+cita);
   }
+  getCitasListaPaciente(cita:any){
+    return this.http.get(this.url+'/getCitasPaciente/'+cita);
+  }
   addCitaRegistro(cita:CitaRegistro){
     return this.http.post(this.url+'/addCita',cita);
   }
@@ -20,11 +23,21 @@ export interface CitaLista{
   idusuarios:number;
   nombreusuario:string;
   fecha:string;
+  hora:string;
   estado:boolean;
 }
 export interface CitaRegistro{
-  fecha:string;
+  fecha:string;  
+  hora:string;
   doctorId:number;
   pacienteId:number;
-  estado:boolean;
+  estado:boolean;  
+}
+export interface CitaPaciente{
+  id:number,
+  doctorDetails:string,
+  doctorName:string,
+  fecha:string,
+  hora:string,
+  estado:boolean
 }

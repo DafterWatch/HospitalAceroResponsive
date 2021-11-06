@@ -14,6 +14,7 @@ export class ConfirmarFichaComponent implements OnInit {
   doctoresData:any;
   areaName:string | any= "";
   fecha:any;
+  hora:any;
   doctorSeleccionado:string = "";
   idDoctorSeleccionado:string = "";
   nombreUsuario:string|any="";
@@ -35,6 +36,7 @@ export class ConfirmarFichaComponent implements OnInit {
   }
   citaReg:CitaRegistro={
     fecha: '',
+    hora:'',
     doctorId: 0,
     pacienteId: 0,
     estado: true
@@ -42,19 +44,22 @@ export class ConfirmarFichaComponent implements OnInit {
   confirmarCita(){
     if(this.doctorSeleccionado){
       if(this.fecha){
-        let idpac = sessionStorage.getItem('usuarioId')+"";        
-        let iddoc = this.idDoctorSeleccionado;        
-        let doctorId = parseInt(iddoc);
-        let pacienteId = parseInt(idpac);
-
-        this.citaReg.fecha = this.fecha;
-        this.citaReg.doctorId = doctorId;
-        this.citaReg.pacienteId = pacienteId;
-        this.citaReg.estado = true;
-
-        this.citaService.addCitaRegistro(this.citaReg).subscribe();
-        alert("Cita Registrada");
-        this.router.navigate(['sacarFichas']);       
+        if(this.hora){
+          let idpac = sessionStorage.getItem('usuarioId')+"";        
+          let iddoc = this.idDoctorSeleccionado;        
+          let doctorId = parseInt(iddoc);
+          let pacienteId = parseInt(idpac);
+          this.citaReg.fecha = this.fecha;
+          this.citaReg.hora = this.hora;
+          this.citaReg.doctorId = doctorId;
+          this.citaReg.pacienteId = pacienteId;
+          this.citaReg.estado = true;
+          this.citaService.addCitaRegistro(this.citaReg).subscribe();
+          alert("Cita Registrada");
+          this.router.navigate(['sacarFichas']); 
+        } else {
+          alert("Tiene que seleccionar una hora");
+        }              
       }else{
         alert("Tiene que seleccionar una fecha");
       }
