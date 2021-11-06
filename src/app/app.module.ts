@@ -19,6 +19,7 @@ import { ConfirmarFichaComponent } from './pages/confirmar-ficha/confirmar-ficha
 import {HttpClientModule} from '@angular/common/http';
 import { RegistroPacienteComponent } from './pages/registro-paciente/registro-paciente.component';
 import { ListaCitasComponent } from './pages/lista-citas/lista-citas.component';
+import { ResgistroListaPacienteComponent } from './pages/resgistro-lista-paciente/resgistro-lista-paciente.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ListaCitasComponent } from './pages/lista-citas/lista-citas.component';
     ConfirmarFichaComponent,
     RegistroPacienteComponent,
     ListaCitasComponent,
+    ResgistroListaPacienteComponent,
   ],
   imports: [
     BrowserModule,

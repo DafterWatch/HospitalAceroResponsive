@@ -10,6 +10,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { MenupageComponent } from './pages/menupage/menupage.component';
 import { RegistroPacienteComponent } from './pages/registro-paciente/registro-paciente.component';
 import { RegistroComponent } from './pages/registro/registro.component';
+import { ResgistroListaPacienteComponent } from './pages/resgistro-lista-paciente/resgistro-lista-paciente.component';
 import { SacarFichasComponent } from './pages/sacar-fichas/sacar-fichas.component';
 import { VerFichasComponent } from './pages/ver-fichas/ver-fichas.component';
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:'confirmarFicha',component:ConfirmarFichaComponent},
   {path:'registroPaciente',component:RegistroPacienteComponent},
   {path:'listaCitas',component:ListaCitasComponent},
+  {path:'registroPacienteLista',component:ResgistroListaPacienteComponent},
 ];
 
 @NgModule({

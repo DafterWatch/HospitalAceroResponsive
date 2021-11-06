@@ -7,7 +7,8 @@
           <tr style="color: blue;">
             <th scope="col">Nombre Paciente</th>
             <th scope="col">Fecha Cita Medica</th>
-            <th scope="col">Consulta Realizada</th>
+            <th scope="col">Registros Paciente</th>
+            <th scope="col">Consulta</th>
           </tr>
         </thead>
         <tbody>
@@ -15,8 +16,7 @@
             <th>{{cita.nombreusuario}}</th>
             <td>{{cita.fecha}}</td>
             <td>
-                <span *ngIf="cita.estado">No Realizado</span>
-                <span *ngIf="!cita.estado">Realizado</span>
+                <button (click)="irRegistroPaciente(cita.idusuarios)" type="button" class="btn btn-primary">Ir Registros</button>
             </td>
             <td>
                 <button (click)="irRegistroPaciente(cita.idusuarios)" type="button" class="btn btn-primary">Realizar Consulta</button>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistroDetailsService, RegistroLista, RegistroUpdate} from 'src/app/services/registro-details.service';
+import { Router } from '@angular/router';
+import { RegistroDetailsService, RegistroLista, RegistroAdd} from 'src/app/services/registro-details.service';
 
 @Component({
   selector: 'app-registro-paciente',
@@ -8,7 +9,7 @@ import { RegistroDetailsService, RegistroLista, RegistroUpdate} from 'src/app/se
 })
 export class RegistroPacienteComponent implements OnInit {
 
-  constructor(private registroService:RegistroDetailsService) { }
+  constructor(private registroService:RegistroDetailsService, private router:Router) { }
   idPacienteActual:any;
   ngOnInit(): void {
     this.idPacienteActual = sessionStorage.getItem('idPaciente');
@@ -20,14 +21,11 @@ export class RegistroPacienteComponent implements OnInit {
     doctorName: '',
     idusuarios: '',
     nombreusuario: '',
-    fechaConsulta: '',
-    datosConsulta: '',
-    instruccionesDoctor: '',
-    recetaMedica: ''
+    fechaConsulta: ''
   }
-  registroPacienteUpdate:RegistroUpdate = {
-    idRegistro: '',  
-    idusuarios: '',
+  registroPacienteNuevo:RegistroAdd={
+    doctorId: '',
+    pacienteId: '',
     fechaConsulta: '',
     datosConsulta: '',
     instruccionesDoctor: '',
@@ -44,16 +42,13 @@ export class RegistroPacienteComponent implements OnInit {
     );
   }
   registrarDatosConsulta(registroObjeto:RegistroLista){
-    this.registroPacienteUpdate.idRegistro = registroObjeto.idRegistro;
-    this.registroPacienteUpdate.idusuarios = registroObjeto.idusuarios;
-    this.registroPacienteUpdate.fechaConsulta = registroObjeto.fechaConsulta;
-    this.registroPacienteUpdate.datosConsulta = registroObjeto.datosConsulta;
-    this.registroPacienteUpdate.instruccionesDoctor = registroObjeto.instruccionesDoctor;
-    this.registroPacienteUpdate.recetaMedica = registroObjeto.recetaMedica;
-    this.registroService.editRegistro(this.registroPacienteUpdate).subscribe(
+    this.registroPacienteNuevo.doctorId = registroObjeto.idDoctor;
+    this.registroPacienteNuevo.pacienteId = registroObjeto.idusuarios;
+    this.registroPacienteNuevo.fechaConsulta = registroObjeto.fechaConsulta;
+    this.registroService.addRegistroMedico(this.registroPacienteNuevo).subscribe(
       res=>{
-        console.log(res);
-        alert("datos actualizados");      
+        alert("Se guardo el registro medico");
+        this.router.navigate(['verFichas']);    
       },
       err=>{
         console.log(err);        

@@ -10,9 +10,8 @@ export class RegistroDetailsService {
   getRegistro(id:any){
     return this.http.get(this.url+'/getRegistro/'+id);
   }
-  editRegistro(registro:RegistroUpdate){
-    console.log(registro);
-    return this.http.put(this.url+'/modificarRegistro', registro);
+  addRegistroMedico(cita:RegistroAdd){
+    return this.http.post(this.url+'/addRegistroMedico',cita);
   }
 }
 export interface RegistroLista{
@@ -22,15 +21,12 @@ export interface RegistroLista{
   doctorName: string;
   nombreusuario: string;
   fechaConsulta: string;
-  datosConsulta:string;
-  instruccionesDoctor:string;
-  recetaMedica:string;
 }
-export interface RegistroUpdate{
-  idRegistro: string;
-  idusuarios: string;
+export interface RegistroAdd{
+  doctorId: string;
+  pacienteId: string;
   fechaConsulta: string;
-  datosConsulta:string;
-  instruccionesDoctor:string;
-  recetaMedica:string;
+  datosConsulta: string;
+  instruccionesDoctor: string;
+  recetaMedica: string;
 }
