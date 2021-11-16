@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AreaDetailsService } from 'src/app/services/area-details.service';
-import { CitasDetailsService, CitaRegistro } from 'src/app/services/citas-details.service';
+import { CitasDetailsService, CitaRegistro, VerificarReserva } from 'src/app/services/citas-details.service';
 
 @Component({
   selector: 'app-confirmar-ficha',
@@ -45,7 +45,30 @@ export class ConfirmarFichaComponent implements OnInit {
     if(this.doctorSeleccionado){
       if(this.fecha){
         if(this.hora){
-          let idpac = sessionStorage.getItem('usuarioId')+"";        
+          this.verificarReservaNueva();
+        } else {
+          alert("Tiene que seleccionar una hora");
+        }              
+      }else{
+        alert("Tiene que seleccionar una fecha");
+      }
+    } else {
+      alert("Tiene que seleccionar un medico");
+    }
+  }
+  verifReserva:VerificarReserva = {
+    fecha: '',
+    hora: ''
+  }
+  verificarReservaNueva(){
+    this.verifReserva.fecha = this.fecha;
+    this.verifReserva.hora = this.hora;
+    this.citaService.getValidarReserva(this.verifReserva).subscribe(
+      res => {
+      if(res){
+        alert("Fecha no disponible, por favor seleccione otra fecha");
+      } else {
+        let idpac = sessionStorage.getItem('usuarioId')+"";        
           let iddoc = this.idDoctorSeleccionado;        
           let doctorId = parseInt(iddoc);
           let pacienteId = parseInt(idpac);
@@ -57,15 +80,11 @@ export class ConfirmarFichaComponent implements OnInit {
           this.citaService.addCitaRegistro(this.citaReg).subscribe();
           alert("Cita Registrada");
           this.router.navigate(['sacarFichas']); 
-        } else {
-          alert("Tiene que seleccionar una hora");
-        }              
-      }else{
-        alert("Tiene que seleccionar una fecha");
       }
-    } else {
-      alert("Tiene que seleccionar un medico");
-    }
+    },
+    err => {
+      console.log(err);
+    });
   }
   seleccionarMedico(id:any, name:any){
     this.idDoctorSeleccionado = id;

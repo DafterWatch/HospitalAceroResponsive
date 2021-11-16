@@ -18,6 +18,13 @@ export class CitasDetailsService {
   addCitaRegistro(cita:CitaRegistro){
     return this.http.post(this.url+'/addCita',cita);
   }
+  getValidarReserva(reserva:VerificarReserva){
+    return this.http.post(this.url+'/getValidarReserva',reserva);
+  }
+}
+export interface VerificarReserva{
+  fecha:string;
+  hora: string;
 }
 export interface CitaLista{
   idusuarios:number;
