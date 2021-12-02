@@ -8,6 +8,8 @@ import { ListaCitasComponent } from './pages/lista-citas/lista-citas.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { MenupageComponent } from './pages/menupage/menupage.component';
+import { PerfilDoctorComponent } from './pages/perfil-doctor/perfil-doctor.component';
+import { PerfilPacienteComponent } from './pages/perfil-paciente/perfil-paciente.component';
 import { RegistroPacienteComponent } from './pages/registro-paciente/registro-paciente.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { ResgistroListaPacienteComponent } from './pages/resgistro-lista-paciente/resgistro-lista-paciente.component';
@@ -28,6 +30,8 @@ const routes: Routes = [
   {path:'registroPaciente',component:RegistroPacienteComponent},
   {path:'listaCitas',component:ListaCitasComponent},
   {path:'registroPacienteLista',component:ResgistroListaPacienteComponent},
+  {path:'perfilPaciente',component:PerfilPacienteComponent},
+  {path:'perfilDoctor',component:PerfilDoctorComponent},
 ];
 
 @NgModule({

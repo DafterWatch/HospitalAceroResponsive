@@ -15,6 +15,9 @@ export class UsuariosDetailsService {
   addUsuarioRegistro(usuario:UsuarioRegistro){
     return this.http.post(this.url+'/addUsuario',usuario);
   }
+  getPerfil(id:any){
+    return this.http.get(this.url+'/getPerfil/'+id);
+  }
 }
 export interface UsuarioLogin{
   correousuario:string;
@@ -33,4 +36,11 @@ export interface UsuarioRegistro{
   correousuario:string;
   contrausuario:string;
   categoria:string;
+}
+export interface PerfilTipo{
+  idusuarios:string,
+  correousuario:string;
+  contrausuario:string;
+  categoria:string;
+  nombreusuario:string;
 }

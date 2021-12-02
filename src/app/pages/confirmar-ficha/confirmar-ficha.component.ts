@@ -45,7 +45,14 @@ export class ConfirmarFichaComponent implements OnInit {
     if(this.doctorSeleccionado){
       if(this.fecha){
         if(this.hora){
-          this.verificarReservaNueva();
+          if(this.hora == "08:00" || this.hora == "08:30" || this.hora == "09:00" || this.hora == "09:30" ||
+          this.hora == "10:00" || this.hora == "10:30" || this.hora == "11:00" || this.hora == "11:30" || this.hora == "12:00" || this.hora == "14:00" ||
+          this.hora == "14:30" || this.hora == "15:00" || this.hora == "15:30" ||  this.hora == "16:00" || this.hora == "16:30" || this.hora == "17:00" ||
+          this.hora == "17:30" || this.hora == "18:00" || this.hora == "18:30" ||  this.hora == "19:00" || this.hora == "19:30" || this.hora == "20:00"){
+            this.verificarReservaNueva();
+          } else {
+            alert("Horario no disponible");
+          }      
         } else {
           alert("Tiene que seleccionar una hora");
         }              

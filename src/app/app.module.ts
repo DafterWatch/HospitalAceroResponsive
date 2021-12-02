@@ -20,6 +20,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { RegistroPacienteComponent } from './pages/registro-paciente/registro-paciente.component';
 import { ListaCitasComponent } from './pages/lista-citas/lista-citas.component';
 import { ResgistroListaPacienteComponent } from './pages/resgistro-lista-paciente/resgistro-lista-paciente.component';
+import { PerfilPacienteComponent } from './pages/perfil-paciente/perfil-paciente.component';
+import { PerfilDoctorComponent } from './pages/perfil-doctor/perfil-doctor.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ResgistroListaPacienteComponent } from './pages/resgistro-lista-pacient
     RegistroPacienteComponent,
     ListaCitasComponent,
     ResgistroListaPacienteComponent,
+    PerfilPacienteComponent,
+    PerfilDoctorComponent,
   ],
   imports: [
     BrowserModule,

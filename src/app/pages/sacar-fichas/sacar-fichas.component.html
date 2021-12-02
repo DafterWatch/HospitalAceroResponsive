@@ -1,8 +1,9 @@
 <div class="container mt-5 mb-5">
+    <button routerLink="/listaCitas" type="button" class="btn btn-dark">Ver Citas Registradas</button><br><br>
+    <button routerLink="/perfilPaciente" type="button" class="btn btn-dark">Ver Perfil</button>
     <h1>Bienvenido <span style="color: blue;">{{nombreUsuario}}</span></h1>
     <br>
     <h2>Seleccionar Especialidad</h2>    
-    <button routerLink="/listaCitas" type="button" class="btn btn-dark">Ver Citas Registradas</button>
     <div class="row">
         <div class="col-lg-4" *ngFor="let area of areasData">
             <div class="docbox mt-3 mb-3">
